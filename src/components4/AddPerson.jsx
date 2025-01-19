@@ -1,8 +1,11 @@
 // src/components/AddPerson.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addPerson } from "../features/peopleSlice";
 
-function AddPerson({ addPerson }) {
+function AddPerson() {
+    const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -39,8 +42,9 @@ function AddPerson({ addPerson }) {
     };
 
     // Dispatch de l'action pour ajouter une personne
-    addPerson(newPerson);  
+    dispatch(addPerson(newPerson));  
     setFormData({ name: "", age: "", city: "" }); // Réinitialiser le formulaire
+    
     navigate("/"); // Rediriger vers la page d'accueil
   };
 

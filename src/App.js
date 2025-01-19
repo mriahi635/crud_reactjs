@@ -99,30 +99,21 @@
 // src/App.js
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import ListPeople from "./components4/ListPeople";
 import AddPerson from "./components4/AddPerson";
 import UpdatePerson from "./components4/UpdatePerson";
 import PersonDetail from "./components4/PersonDetail";
-import { addPerson, updatePerson } from "./features/peopleSlice";
 
 function App() {
-  const dispatch = useDispatch();
 
-  const handleAddPerson = (person) => {
-    dispatch(addPerson(person));  // Dispatch pour ajouter une personne
-  };
-
-  const handleUpdatePerson = (updatedPerson) => {
-    dispatch(updatePerson(updatedPerson));  // Dispatch pour mettre à jour une personne
-  };
 
   return (
     <div>
       <Routes>
         <Route path="/" element={<ListPeople />} />
-        <Route path="/add" element={<AddPerson addPerson={handleAddPerson} />} />
-        <Route path="/update/:id" element={<UpdatePerson updatePerson={handleUpdatePerson} />} />
+        <Route path="/add" element={<AddPerson />} />
+        <Route path="/update/:id" element={<UpdatePerson  />} />
         <Route path="/details/:id" element={<PersonDetail />} />
       </Routes>
     </div>
